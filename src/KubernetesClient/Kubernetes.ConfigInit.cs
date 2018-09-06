@@ -210,7 +210,7 @@ namespace k8s
                 };
             }
             // othwerwise set handler for clinet cert based auth
-            if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
+            else if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
                       !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
                      (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
                       !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
