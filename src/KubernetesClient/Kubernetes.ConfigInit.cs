@@ -209,8 +209,13 @@ namespace k8s
                     Password = config.Password
                 };
             }
-            // othwerwise set handler for clinet cert based auth
-            else if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
+
+#if XAMARINIOS1_0 || MONOANDROID8_1
+            // handle.ClientCertificates is not implemented in Xamarin.
+            return;
+#endif
+
+            if ((!string.IsNullOrWhiteSpace(config.ClientCertificateData) ||
                       !string.IsNullOrWhiteSpace(config.ClientCertificateFilePath)) &&
                      (!string.IsNullOrWhiteSpace(config.ClientCertificateKeyData) ||
                       !string.IsNullOrWhiteSpace(config.ClientKeyFilePath)))
